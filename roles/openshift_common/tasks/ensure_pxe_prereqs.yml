@@ -25,6 +25,7 @@
     - '{{ coreos.installer_initramfs_url }}'
     - '{{ coreos.installer_kernel_url }}'
     - '{{ coreos.metal_bios_url }}'
+  retries: 3
 
 - name: Ensure required directories exist
   file:

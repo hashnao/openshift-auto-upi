@@ -1,8 +1,3 @@
-- name: Generate ignition configs
-  import_role:
-    name: openshift_common
-    tasks_from: generate_ignition.yml
-
 - name: Compute virtual machine names
   import_role:
     name: openshift_common
@@ -14,14 +9,9 @@
 - name: Deploy hosts
   import_tasks: deploy_hosts.yml
 
-- name: Wait for ssh on OpenShift hosts
-  import_role:
-    name: openshift_common
-    tasks_from: wait_for_ssh.yml
-  vars:
-    wait_for_ssh_existing_vms: '{{ libvirt_existing_vms }}'
-
-- name: Wait for the bootstrap to complete
-  import_role:
-    name: openshift_common
-    tasks_from: wait_for_bootstrap.yml
+#- name: Wait for ssh on OpenShift hosts
+#  import_role:
+#    name: openshift_common
+#    tasks_from: wait_for_ssh.yml
+#  vars:
+#    wait_for_ssh_existing_vms: '{{ libvirt_existing_vms }}'

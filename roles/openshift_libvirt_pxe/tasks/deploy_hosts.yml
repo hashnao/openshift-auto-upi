@@ -3,6 +3,7 @@
     uri: '{{ libvirt.libvirt_connection_uri }}'
     command: list_vms
   register: libvirt_vms
+  become: True
 
 - name: Define existing virtual machines
   set_fact:

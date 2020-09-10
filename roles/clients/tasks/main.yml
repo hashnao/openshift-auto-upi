@@ -10,24 +10,28 @@
     url: '{{ openshift_installer.archive_url }}'
     dest: '{{ helper.install_bin_dir }}/{{ openshift_installer.archive_url | basename }}'
     checksum: 'sha256:{{ openshift_installer.sha256sum_url }}'
+  retries: 3
 
 - name: Extract openshift-install
   unarchive:
     src: '{{ helper.install_bin_dir }}/{{ openshift_installer.archive_url | basename }}'
     dest: '{{ helper.install_bin_dir }}'
     creates: '{{ helper.install_exe }}'
+    remote_src: True
 
 - name: Download oc client archive {{ openshift_client.archive_url }}
   get_url:
     url: '{{ openshift_client.archive_url }}'
     dest: '{{ helper.install_bin_dir }}/{{ openshift_client.archive_url | basename }}'
     checksum: 'sha256:{{ openshift_client.sha256sum_url }}'
+  retries: 3
 
 - name: Extract oc client
   unarchive:
     src: '{{ helper.install_bin_dir }}/{{ openshift_client.archive_url | basename }}'
     dest: '{{ helper.install_bin_dir }}'
     creates: '{{ helper.oc_exe }}'
+    remote_src: True
 
 - name: Get installer info
   command: '{{ helper.install_exe }} version'

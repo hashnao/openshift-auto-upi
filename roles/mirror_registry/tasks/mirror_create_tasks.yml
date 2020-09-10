@@ -22,4 +22,4 @@
 
 - name: Reload systemd unit configuration
   command: systemctl --system daemon-reload
-  become: yes
+  become: True

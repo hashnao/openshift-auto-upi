@@ -1,3 +1,4 @@
+{{ ansible_default_ipv4.address }} {{ ansible_fqdn }}
 {% for item in openshift_cluster_hosts %}
 {{ item.ipaddr }} {{ item.hostname }}.{{ openshift_install_config.cluster_domain }}
 {% endfor %}

@@ -5,8 +5,3 @@
       - '{{ rpm_name["libvirt-python"] }}'
     state: present
   become: True
-
-- name: Ensure PXE prerequisites
-  import_role:
-    name: openshift_common
-    tasks_from: ensure_pxe_prereqs.yml

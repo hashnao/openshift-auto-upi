@@ -1,4 +1,20 @@
 - hosts: helper
   tasks:
-    - import_role:
-        name: openshift_libvirt_pxe
+  - import_role:
+      name: openshift_common
+      tasks_from: generate_ignition.yml
+  - import_role:
+      name: openshift_common
+      tasks_from: ensure_pxe_prereqs.yml
+
+- hosts: kvm
+  tasks:
+  - import_role:
+      name: openshift_libvirt_pxe
+
+- hosts: helper
+  tasks:
+  - name: Wait for the bootstrap to complete
+    import_role:
+      name: openshift_common
+      tasks_from: wait_for_bootstrap.yml

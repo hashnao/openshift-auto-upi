@@ -15,11 +15,11 @@
 
       2. You can check the health of your cluster using:
 
-         KUBECONFIG={{ helper.install_conf_dir }}/auth/kubeconfig {{ helper.oc_exe }} get clusteroperator
+         export KUBECONFIG={{ helper.install_conf_dir }}/auth/kubeconfig {{ helper.oc_exe }} get clusteroperator
 
          and
 
-         KUBECONFIG={{ helper.install_conf_dir }}/auth/kubeconfig {{ helper.oc_exe }} get clusterversion
+         export KUBECONFIG={{ helper.install_conf_dir }}/auth/kubeconfig {{ helper.oc_exe }} get clusterversion
 
       3. Note that it will take a while for the cluster operators to complete the cluster installation.
          You can wait for the cluster installation to complete using:
